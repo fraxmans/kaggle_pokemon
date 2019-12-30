@@ -4,6 +4,17 @@ import seaborn as sns
 
 from common import target_encoding
 
+def attribute_winner_scatterplot(combats):
+    attribute = ["HP", "Attack", "Defense", "Sp_Atk", "Sp_Def", "Speed"]
+
+    for col in attribute:
+        x = col + "_f"
+        y = col + "_s"
+
+        ax = sns.scatterplot(x=x, y=y, hue="Winner", data=combats)
+        ax.set_title("%s - Winner scatterplot" % col)
+        plt.show()
+
 def generation_winrate_distribution(pokemon, combats):
     index = pokemon["Generation"].unique()
     df = pd.DataFrame(0, index=index, columns=["win_count", "fight_count", "win_rate"])
