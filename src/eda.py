@@ -168,6 +168,7 @@ def load_data(fname):
 def main():
     pokemon = load_data("data/pokemon.csv")
     pokemon["mix_type"] = pokemon["Type_1"] + "-" + pokemon["Type_2"]
+    pokemon.fillna("nan", inplace=True)
 
     combats = load_data("data/combats.csv")
     combats["Winner"] = (combats["Winner"] == combats["First_pokemon"])
